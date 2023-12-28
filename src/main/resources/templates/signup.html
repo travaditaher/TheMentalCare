@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>TheMentalCare</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" th:href="@{/css/signup.css}">
+</head>
+
+<body th:background=@{/images/signup-images/signup-bg.jpg}>
+
+    <nav class="navbar navbar-expand-lg navbar-mainbg">
+        <a class="navbar-brand navbar-logo"><img th:src="@{/images/logo.png}"></a>
+        <button class="navbar-toggler" type="button" 
+        data-toggle="collapse" data-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <h2 class="ma">TheMentalCare</h2>  
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/home}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/about}"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a class="nav-link1" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link1" th:href="@{/signup}"><i class="fa fa-user-plus" aria-hidden="true"></i>Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>    
+    
+    <div class="container">
+        <h3>Signup</h3>
+        <br>
+        <div th:if="${param.success}">
+            <p>Registered successfully!</p>
+        </div>
+        <br>
+        <form th:action="@{/signup}" method="POST" th:object="${user}" >
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="First Name" th:field="*{firstName}" onfocus="this.placeholder=''" onblur="this.placeholder='First Name'" required><br>
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="Last Name" th:field="*{lastName}" onfocus="this.placeholder=''" onblur="this.placeholder='Last Name'" required><br>
+            <i class="fa fa-envelope"></i>
+            <input type="text" placeholder="Email" th:field="*{email}" onfocus="this.placeholder=''" onblur="this.placeholder='Email'" required><br>
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" th:field="*{password}" onfocus="this.placeholder=''" onblur="this.placeholder='Password'" required><br>
+            <div class="role-selection">
+                <input type="radio" name="role" id="role-p" th:field="*{role}" value="PATIENT" required><label for="role-p">Patient</label>
+                <input type="radio" name="role" id="role-t" th:field="*{role}" value="THERAPIST" required><label for="role-t">Therapist</label><br>
+            </div>
+            <br>
+            <button type="submit" class="signup-btn">Signup</button><br>
+            <div class="href">
+                <p>Already have an account? <a th:href="@{/login}"><u>Login</u></a></p>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h1>You have landed exactly<br>at the right place😇</h1>
+        <br>
+        <h3>Here's a quote from<br><i>'Mariska Harigtay'</i>for you.</h3>
+        <p>
+            "Healing takes time<br>
+            and asking for help<br>
+            is a courageous step."
+        </p>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <script th:src="@{/js/nav.js}"></script>
+
+</body>
+</html> 

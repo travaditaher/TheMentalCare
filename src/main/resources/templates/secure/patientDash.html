@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+	<title>TheMentalCare</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,400;1,700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
+	<link rel="stylesheet" th:href="@{/css/secure/patient-appt-dash.css}">
+
+</head>
+<body>
+	
+    <nav class="navbar navbar-expand-lg navbar-mainbg">
+        <a class="navbar-brand navbar-logo"><img th:src="@{/images/logo.png}"></a>
+        <button class="navbar-toggler" type="button" 
+        data-toggle="collapse" data-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <h2 class="ma">TheMentalCare</h2>  
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item active">
+                    <a class="nav-link1" th:href="@{/home}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/about}"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a class="nav-link1" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/signup}"><i class="fa fa-user-plus" aria-hidden="true"></i>Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+	<!--------------------------------DASHBOARD---------------------------------->
+
+	<!--===========SIDEBAR================-->
+	<div class="sidebar">
+		<div class="profile_info">
+			<div class="profile_infon">
+				<h4>Hello there</h4>
+			</div>
+			<div class="profile_image">
+				<img th:src="@{/images/secure/user-dp.png}" alt="UserDP">
+			</div>
+		</div>
+		<hr class="divider"> <!--divider betwn image and info-->
+		<div class="container">
+			<ul>
+				<li>
+					<p>
+						<span class="icon"><i class="fa fa-user"></i>Name:</span>
+						<span class="user-info" th:text=${fullname}></span>
+					</p>
+				</li>
+				<li>
+					<p>
+						<span class="icon"><i class="fa fa-envelope"></i>Email:</span>
+						<span class="user-info" th:text="${#authentication.getPrincipal().getUsername()}"></span>
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+	<!--=====================THERAPIST DATA TABLE===================================-->
+
+	<div class="mytable">
+        <h1>Select your therapist</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th class="column1">Therapist Id</th>
+                        <th class="column2">Name</th>
+                        <th class="column3">Email</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content" data-simplebar>
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+					<tr th:if="${therapists.empty}">
+						<td colspan="3">NO DATA AVAILABLE</td>
+					</tr>
+					<tr th:each="therapist : ${therapists}">
+						<td class="column1">Unique ID</td>
+						<td class="column2" th:text="${therapist.fullname}"></td>
+						<td class="column3" th:text="${therapist.email}"></td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+			
+	<!--=============CONTACT/APPOINTMENT FORM=================-->
+
+	<div class="container1">
+		<h3>Make your appointment</h3>
+		<form th:action="@{/patient/make-appointment}" method="POST" th:object="${appointmentDto}">
+			<input id="from-email-input" type="text" placeholder="Your email id" onfocus="this.placeholder=''" onblur="this.placeholder='Your email id'" th:field="*{patientEmail}" required readonly><br>
+            <input id="to-email-input" type="email" placeholder="Therapist email id" onfocus="this.placeholder=''" onblur="this.placeholder='Therapist email id'" th:field="*{therapistEmail}" required><br>
+            <input id="subject-input" type="text" placeholder="Appointment subject" onfocus="this.placeholder=''" onblur="this.placeholder='Appointment subject'" th:field="*{appointmentSubject}" required><br>
+            <textarea id="message-input" type="text" placeholder="Appointment message" onfocus="this.placeholder=''" onblur="this.placeholder='Appointment message'" th:field="*{appointmentMessage}" required></textarea><br><br>
+            <button id="confirmbtn" type="submit" class="confirm-btn">Confirm Appointment</button><br>
+        </form>
+    </div>
+				
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+	<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+	<script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+	<script th:src="@{/js/nav.js}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	<script th:src="@{/js/pop.js}"></script>
+
+</body>
+</html>

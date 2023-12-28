@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@1,300&display=swap');
+
+
+* {
+	margin: 0;
+    padding: 0;
+    text-decoration: none !important;
+}
+
+html,body {
+    background-color: #fff;
+    font-family: 'Source Sans Pro', sans-serif;
+    overflow-x: hidden !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+i {
+	margin-right: 10px;
+}
+
+
+/*----------multi-level-accordian-menu------------*/
+#navbar {
+    right: -10%;
+    padding: 25px;
+}
+.navbar-logo {
+	width: 250px;
+	height: auto;
+}
+.navbar-mainbg {
+	background-color: #5161ce;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 62px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px 0 25px;
+    box-shadow: 0 19px 38px rgba(16, 39, 141, 0.541);
+}
+h2.ma {
+    color: rgb(255, 255, 255);
+    font-family: 'Nunito', sans-serif;
+}
+#navbarSupportedContent {
+	overflow: hidden;
+	position: relative;
+}
+#navbarSupportedContent ul {
+	padding: 0px;
+	margin: 0px;
+}
+#navbarSupportedContent ul li a i {
+	margin-right: 10px;
+}
+#navbarSupportedContent li {
+	list-style-type: none;
+	float: left;
+}
+#navbarSupportedContent ul li a {
+	color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    padding: 20px 20px;
+    transition-duration:0.6s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+#navbarSupportedContent>ul>li.active>a {
+	color: #5161ce;
+	background-color: transparent;
+	transition: all 0.7s;
+}
+#navbarSupportedContent a:not(:only-child):after {
+	content: "\f105";
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	font-size: 14px;
+	font-family: "Font Awesome 5 Free";
+	display: inline-block;
+	padding-right: 3px;
+	vertical-align: middle;
+	font-weight: 900;
+	transition: 0.5s;
+}
+#navbarSupportedContent .active>a:not(:only-child):after {
+	transform: rotate(90deg);
+}
+.hori-selector {
+	display:inline-block;
+	position:absolute;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	transition-duration:0.6s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	background-color: #fff;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	margin-top: 10px;
+}
+.hori-selector .right, .hori-selector .left {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	background-color: #fff;
+	bottom: 10px;
+}
+.hori-selector .right {
+	right: -25px;
+}
+.hori-selector .left {
+	left: -25px;
+}
+.hori-selector .right:before, .hori-selector .left:before {
+	content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #5161ce;
+}
+.hori-selector .right:before {
+	bottom: 0;
+    right: -25px;
+}
+.hori-selector .left:before {
+	bottom: 0;
+    left: -25px;
+}
+
+/*----------------------------------------*/
+
+/*
+.nav{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0 25px 0 25px;
+    box-shadow: 0 19px 38px rgba(0,0,0,.1);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.nav .links a{
+    margin-right: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+.nav .links .mainlink{
+    color: #e0501b;
+}
+
+.nav h4{
+    font-size: 22px;
+    font-weight: bold;
+    margin-left: 25px;
+}
+------------------------------------------------------------------------------------*/
+
+
+/* landing */
+.landing {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0 8vw 0 8vw;
+    height: 97vh;  
+}
+
+.landingtext h1 {
+    margin: 0 !important;
+}
+
+.landingtext h3 {
+    margin: 0px !important;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.landingtext .btns {
+    margin-top: 15px;
+    display: flex;
+}
+
+.btns button {
+	height: 50px;
+	width: 140px;
+	font-size: 14px;
+	background-image: linear-gradient(45deg, #10d7e6, #181bc4);
+	color: white;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 50px;
+    transition: 0.3s;
+    margin: 20px;
+    
+}
+
+.landing .landingtext .btns .btn2 {
+    margin-left: 0px;
+}
+
+.btns button:hover {
+    background-position: bottom left;
+    box-shadow: 0 19px 38px rgba(16, 39, 141, 0.541);
+}
+
+.landingimage img {
+    width: 34vw;
+}
+
+
+/* about css */
+.about {
+    height: 800px;
+    padding: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.abouttext {
+    position: relative;
+    height: inherit;
+}
+
+.abouttext h1 {
+    position: relative;
+}
+
+.abouttext img {
+    width: 600px;
+    height: 600px;
+    position: absolute;
+    top: 50px;
+    left: -120px;
+}
+
+.aboutlist {
+    width: 50%;
+}
+
+ol {
+    list-style: disc;
+    color: #5161ce;
+}
+
+ol li {
+    font-size: 25px;
+    position: relative;
+    margin-bottom: 1px solid rgb(0, 0, 0);
+    margin-bottom: 15px;
+}
+
+li p {
+    font-size: 16px;
+    color: rgb(0, 0, 0);
+    line-height: 30px;
+    padding-left: 30px;
+}
+
+li span {
+    position: absolute;
+    line-height: 36px;
+    font-weight: 600;
+}
+
+p span {
+    font-style: italic;
+    position: relative;
+    font-weight: bold;
+}
+
+
+/* info_section */
+.infoheader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.infocards {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px 0 40px 0;
+}
+
+.infocards .card {
+    position: relative;
+    height: 500px;
+    width: 380px;
+    background: #fff;
+    box-shadow: 0 10px 22px rgba(0,0,0,.09), 0 10px 10px rgba(0,0,0,.09);
+}
+
+.infocards .one .cardoneimg {
+    width: 360px;
+    position: absolute;
+    top: -80px;
+    right: -20px;
+}
+
+.infocards .two .cardtwoimg {
+    width: 320px;
+    position: absolute;
+    top: -60px;
+    right: -10px;
+}
+
+.infocards .three .cardthreeimg {
+    width: 330px;
+    position: absolute;
+    top: -65px;
+    right: -10px;
+}
+
+.cardbgone {
+    height: 150px;
+    background-color: #a1ffb1;
+}
+
+.cardbgtwo {
+    height: 150px;
+    background-color: #f8ff93;
+}
+
+.cardbgthree {
+    height: 150px;
+    background-color: #ff6363;
+}
+
+.cardcontent {
+    padding: 0 20px;
+}
+
+.cardcontent h2 {
+    font-style: italic;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.cardcontent p {
+    line-height: 30px;
+}
+
+.cardcontent .cardbtn {
+    position: absolute;
+    right: 20px;
+    padding: 10px;
+    background-color: #ededed;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all ease-in-out 0.2s;
+}
+
+.cardcontent .cardbtn:hover {
+    background-color: #2f8be0;
+}
+
+.cardcontent .cardbtn .cardicon {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 160px;
+}
+
+
+/* footer */
+.footer {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.footer h2{
+    font-family: 'Nunito';
+    color: #5161ce;
+}
+
+.footerlinks {
+    margin: 5px;
+    font-size: 16px;
+    color: rgb(184, 184, 184);
+}
+
+
+/*responsive*/
+@media only screen and (max-width: 900px){
+
+    .nav{
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        height: auto;
+        overflow-y: hidden;
+    }
+
+    .nav h4{
+        font-size: 6vw;
+        margin-top: 10px;
+        margin-bottom: 14px;
+    }
+
+    .nav .links a{
+        margin-right: 25px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    /* landing page*/
+
+        .landing{
+            flex-direction: column-reverse;
+            height: 750px;
+        }
+
+        .landingtext h1{
+            font-size: 6vw;
+            margin: 0 !important;
+        }
+
+        .landingtext h3{
+            font-size: 16px;
+        }
+
+        .landingtext .btn{
+            margin: 0 auto;
+        }
+
+        .landingtext .btn a{
+            font-size: 3vw;
+        }
+
+        .landingimage img{
+            width: 52vw;
+            margin-bottom: 20px;
+        }
+
+    /* about */
+    
+        .about{
+            height: auto;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .abouttext{
+            padding: 0 50px;
+            height: 100px;
+        }
+
+        .abouttext h1{
+            left: 40px;
+            font-size: 5vw;
+        }
+
+        .abouttext img{
+            width: 16vw;
+            top: 10px;
+            left: -30px;
+        }
+
+        .aboutlist{
+            width: 75%;
+        }
+
+        ol li{
+            font-size: 26px;
+        }
+
+        li p{
+            font-size: 14px;
+        }
+
+        /* infosection */
+
+        .infosection{
+            height: auto;
+        }
+
+        .infoheader{
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .infocards{
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .infocards .card{
+            margin-bottom: 60px;
+        }
+/*-------------footer--------------------*/
+        .footer{
+         padding-bottom: 40px;
+        }
+}

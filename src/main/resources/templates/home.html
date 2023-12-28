@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>TheMentalCare</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" th:href="@{/css/homy.css}">
+</head>
+<body>
+    <!-- partial:index.partial.html -->
+    <nav class="navbar navbar-expand-lg navbar-mainbg">
+        <a class="navbar-brand navbar-logo"><img th:src="@{/images/logo.png}"></a>
+        <button class="navbar-toggler" type="button" 
+        data-toggle="collapse" data-target="#navbarSupportedContent" 
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <h2 class="ma">TheMentalCare</h2>  
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+                <li class="nav-item active">
+                    <a class="nav-link1" th:href="@{/home}"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/about}"><i class="fa fa-info-circle" aria-hidden="true"></i>About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" sec:authorize="isAnonymous()" th:href="@{/login}"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <a class="nav-link1" sec:authorize="isAuthenticated()" th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link1" th:href="@{/signup}"><i class="fa fa-user-plus" aria-hidden="true"></i>Signup</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
+    <script th:src="@{/js/nav.js}"></script>
+    
+    <!--landing page-->
+    <div class="landing">
+        <div class="landingtext" data-aos="fade-up" data-aos-duration="1000">
+            <h1><span style="color: #7a7a7a; font-size: 4vw;">Mental health matters.</span></h1>
+            <h3><span style="color: rgb(0, 0, 0); font-size: 20px;">Let's talk and get this solved.<br>
+                Sit back and relax. We are here to help.</h3>
+            <div class="btns">
+                <a th:href="@{/signup}"><button class="btn1">Know more</button></a>
+                <a th:href="@{/login}"><button class="btn2">Get started</button></a>
+            </div>
+        </div>
+        <div class="landingimage" data-aos="fade-down" data-aos-duration="1000">
+            <img th:src="@{/images/home-images/landing-pic.png}">
+        </div>
+    </div>
+    
+    <!--about section-->
+    <div class="about">
+        <div class="abouttext" data-aos="fade-up" data-aos-duration="1000">
+            <h1><span style="color: #7a7a7a; font-size: 3vw;">How to be fit mentally?</span></h1>
+            <img th:src="@{/images/home-images/about-pic.png}">
+        </div>
+        <div class="aboutlist" data-aos="fade-right" data-aos-duration="1000">
+            <ol>
+                <li>
+                    <p><span>Exercise for 30 minutes every day.</span> Physical exercise delivers oxygen to the brain. 
+                        This can help to improve your memory, 
+                        reasoning abilities and reaction times.
+                    </p>
+                </li>   
+                <li>
+                    <p><span>Read often and widely.</span> Keeping an active interest in the world around you 
+                        will help to exercise your brain and improve your mental fitness.
+                    </p>
+                </li>
+                <li>
+                    <p><span>Boost your levels of vitamin B.</span> Eat plenty of wholegrain cereals, 
+                        leafy greens and dairy foods. Vitamin B is essential to mental health.
+                    </p>
+                </li>
+                <li>
+                    <p><span>Take time to relax.</span> Excess stress hormones like cortisol can be harmful to the brain. 
+                        Schedule regular periods of relaxation into your week.
+                    </p>
+                </li>
+                <li>
+                    <p><span>Think positively.</span> Look at positive aspects of
+                        your life. Look ahead instead of looking back,
+                        and be optimistic.
+                    </p>
+                </li>
+                <li>
+                    <p><span>Engage in stimulating conversations.</span> Talk to friends and family about a wide range of topics. 
+                        This gives your brain an opportunity to explore, examine and enquire.
+                    </p>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    <!-- info section-->
+    <div class="infosection">
+        <div class="infoheader" data-aos="fade-up" data-aos-duration="1000">
+            <h1><span style="color: #7a7a7a">Signs that you might be suffering<br>from mental illness.</span></h1>
+        </div>
+        <div class="infocards">
+            <div class="card one" data-aos="fade-up" data-aos-duration="1000">
+                <img th:src="@{/images/home-images/info-section-1.png}" class="cardoneimg" data-aos="fade-up" data-aos-duration="1100">
+                <div class="cardbgone"></div>
+                <div class="cardcontent">
+                    <h2>Bipolar Disorder</h2>
+                    <p>
+                        Bipolar disorder is a mental health condition that causes extreme mood swings.
+                        When you become depressed, you may feel sad or hopeless and lose interest 
+                        in most activities. When your mood shifts  you may feel full of energy 
+                        or unusually irritable. Mood episodes last days to months at a time 
+                        and may also be associated with suicidal thoughts.
+                    </p>
+                    <a th:href="@{/}">
+                        <div class="cardbtn">
+                            <img th:src="@{/images/home-images/next-icon.png}" class="cardicon">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="card two" data-aos="fade-up" data-aos-duration="1300">
+                <img th:src="@{/images/home-images/info-section-2.png}" class="cardtwoimg" data-aos="fade-up" data-aos-duration="1200">
+                <div class="cardbgtwo"></div>
+                <div class="cardcontent">
+                    <h2>Anxiety Disorder</h2>
+                    <p>
+                        Anxiety disorder is a state of mind where a person worries constantly and excessively 
+                        for no apparent reason, making it difficult for you to perform 
+                        day-to-day activities. Fearing any social or performance-related situations, 
+                        in which you may be exposed to possible scrutiny by others. 
+                        You fear that you will act in a way that will be humiliating or embarrassing.
+                    </p>
+                    <a th:href="@{/}">
+                        <div class="cardbtn">
+                            <img th:src="@{/images/home-images/next-icon.png}" class="cardicon">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="card three" data-aos="fade-up" data-aos-duration="1600">
+                <img th:src="@{/images/home-images/info-section-3.png}" class="cardthreeimg" data-aos="fade-up" data-aos-duration="1300">
+                <div class="cardbgthree"></div>
+                <div class="cardcontent">
+                    <h2>Clinical Depression</h2>
+                    <p>
+                        Clinical depression is a significant medical condition that 
+                        impacts mood and behavior as well as various physical functions, 
+                        such as appetite and sleep. People with clinical depression often lose interest in activities 
+                        they once enjoyed and have trouble performing everyday activities. 
+                        Occasionally, they may also feel as if life isn’t worth living.
+                    </p>
+                    <a th:href="@{/}">
+                        <div class="cardbtn">
+                            <img th:src="@{/images/home-images/next-icon.png}" class="cardicon">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    
+    <!-- footer-->
+    <div class="footer">
+        <h2>TheMentalCare</h2>
+        <div class="footerlinks">
+            <p>All rights reserved <i class="fa fa-copyright"></i></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+</body>
+</html>
+
+
+<!--
+    <div>
+        <ul>
+            <li>
+                <a sec:authorize="isAuthenticated()" th:href="@{/logout}">logout</a>
+                <a sec:authorize="isAnonymous()" th:href="@{/login}">login</a>
+            </li>
+        </ul>
+    </div>
+-->
